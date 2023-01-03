@@ -9,13 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ArticleComponent } from './articles/article/article.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    ArticleComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -23,8 +25,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     AppRoutingModule,
     HttpClientModule,
     MatTabsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

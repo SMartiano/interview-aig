@@ -1,1 +1,8 @@
-<p>articles works!</p>
+<div *ngFor="let article of articles">
+  <app-article
+    [isFavorite]="
+      getFavoritesArticlesIDFromLocalStorage()?.includes(article.ID.toString())
+    "
+    [article]="article"
+  ></app-article>
+</div>
