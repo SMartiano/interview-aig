@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AigExamModelStoreContainer" CdmEntityContainer="AigExamEntities">
+    <EntitySetMapping Name="V_getCategory">
+      <EntityTypeMapping TypeName="AigExamModel.V_getCategory">
+        <MappingFragment StoreEntitySet="V_getCategory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="P_getArticlesByCategory" FunctionName="AigExamModel.Store.P_getArticlesByCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AigExamModel.P_getArticlesByCategory_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

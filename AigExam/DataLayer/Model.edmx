@@ -14,7 +14,9 @@ warning 6002: The table/view 'AigExam.dbo.V_getCategory' does not have a primary
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="P_getArticlesByCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="AigExamModelStoreContainer">
           <EntitySet Name="V_getCategory" EntityType="Self.V_getCategory" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -35,15 +37,25 @@ warning 6002: The table/view 'AigExam.dbo.V_getCategory' does not have a primary
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="AigExamEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AigExamEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="V_getCategory" EntityType="Self.V_getCategory" />
+          <FunctionImport Name="P_getArticlesByCategory" ReturnType="Collection(AigExamModel.P_getArticlesByCategory_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="P_getArticlesByCategory_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Category" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AigExamModelStoreContainer" CdmEntityContainer="AigExamEntities1">
+        <EntityContainerMapping StorageEntityContainer="AigExamModelStoreContainer" CdmEntityContainer="AigExamEntities">
           <EntitySetMapping Name="V_getCategory">
             <EntityTypeMapping TypeName="AigExamModel.V_getCategory">
               <MappingFragment StoreEntitySet="V_getCategory">
@@ -52,6 +64,17 @@ warning 6002: The table/view 'AigExam.dbo.V_getCategory' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="P_getArticlesByCategory" FunctionName="AigExamModel.Store.P_getArticlesByCategory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AigExamModel.P_getArticlesByCategory_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -66,7 +89,7 @@ warning 6002: The table/view 'AigExam.dbo.V_getCategory' does not have a primary
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

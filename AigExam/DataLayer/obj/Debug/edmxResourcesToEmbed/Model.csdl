@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AigExamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="V_getCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="AigExamEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="V_getCategory" EntityType="Self.V_getCategory" />
+    <FunctionImport Name="P_getArticlesByCategory" ReturnType="Collection(AigExamModel.P_getArticlesByCategory_Result)">
+      <Parameter Name="categoryID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="P_getArticlesByCategory_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Image" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="Category" Nullable="false" />
+  </ComplexType>
+</Schema>

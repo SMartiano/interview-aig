@@ -12,11 +12,13 @@ namespace DataLayer
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class AigExamEntities1 : DbContext
+    public partial class AigExamEntities : DbContext
     {
-        public AigExamEntities1()
-            : base("name=AigExamEntities1")
+        public AigExamEntities()
+            : base("name=AigExamEntities")
         {
         }
     
@@ -26,5 +28,14 @@ namespace DataLayer
         }
     
         public virtual DbSet<V_getCategory> V_getCategory { get; set; }
+    
+        public virtual ObjectResult<P_getArticlesByCategory_Result> P_getArticlesByCategory(Nullable<int> categoryID)
+        {
+            var categoryIDParameter = categoryID.HasValue ?
+                new ObjectParameter("categoryID", categoryID) :
+                new ObjectParameter("categoryID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<P_getArticlesByCategory_Result>("P_getArticlesByCategory", categoryIDParameter);
+        }
     }
 }
