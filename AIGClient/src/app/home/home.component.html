@@ -1,0 +1,11 @@
+<mat-tab-group class="tabs">
+    <mat-tab label="Categories">
+        <div *ngFor="let category of categories">
+            <button mat-button>{{category.CategoryName}}</button>
+        </div>
+    </mat-tab>
+    <mat-tab label="Favorites">
+        <button (click)="getFavorites()">getFavorites</button>
+
+    </mat-tab>
+</mat-tab-group>
