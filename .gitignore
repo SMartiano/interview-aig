@@ -2,7 +2,8 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/AIGClient/.angular/cache/14.2.10
+/AIGClient/.angular
+/AIGClient/node_modules
 /AigExam/.vs/AigExam/FileContentIndex
 /AigExam/.vs/**
 /.vs/interview-aig/FileContentIndex
