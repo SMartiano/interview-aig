@@ -1,3 +1,5 @@
+CREATE DATABASE [AigExam]
+GO
 USE [AigExam]
 GO
 /****** Object:  Table [dbo].[Category]    Script Date: 03/01/2023 15:58:37 ******/
