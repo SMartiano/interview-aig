@@ -18,5 +18,18 @@ namespace DataLayer
         {
             return this.entity.V_getCategory.Select(e => e).ToList();
         }
+
+        public List<V_getAllArticles> GetFavorites(string[] favorites)
+        {
+            List<V_getAllArticles> list = null;
+            if (favorites != null)
+            {
+                list = new List<V_getAllArticles>();
+            }
+
+            List<V_getAllArticles> roles = this.entity.V_getAllArticles.Select(e => e).Where(r => favorites.Contains(r.ID.ToString())).ToList();
+
+            return roles;
+        }
     }
 }

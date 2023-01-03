@@ -90,3 +90,6 @@ C:\Users\Asus\Desktop\AigExam\AigExam\AigExam\bin\DataLayer.dll.config
 C:\Users\Asus\Desktop\AigExam\AigExam\AigExam\bin\EntityFramework.xml
 C:\Users\Asus\Desktop\AigExam\AigExam\AigExam\bin\EntityFramework.SqlServer.dll
 C:\Users\Asus\Desktop\AigExam\AigExam\AigExam\bin\EntityFramework.SqlServer.xml
+C:\Users\Asus\Desktop\AigExam\AigExam\AigExam\bin\System.Web.Cors.dll
+C:\Users\Asus\Desktop\AigExam\AigExam\AigExam\bin\System.Web.Http.Cors.dll
+C:\Users\Asus\Desktop\AigExam\AigExam\AigExam\bin\System.Web.Http.Cors.xml

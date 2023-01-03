@@ -28,6 +28,7 @@ namespace DataLayer
         }
     
         public virtual DbSet<V_getCategory> V_getCategory { get; set; }
+        public virtual DbSet<V_getAllArticles> V_getAllArticles { get; set; }
     
         public virtual ObjectResult<P_getArticlesByCategory_Result> P_getArticlesByCategory(Nullable<int> categoryID)
         {

@@ -70,6 +70,9 @@
     <Compile Include="P_getArticlesByCategory_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="V_getAllArticles.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="V_getCategory.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

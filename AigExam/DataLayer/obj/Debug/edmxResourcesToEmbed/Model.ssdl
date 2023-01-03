@@ -1,6 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="AigExamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <!--Errors Found During Generation:
+warning 6002: The table/view 'AigExam.dbo.V_getAllArticles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_getAllArticles">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Category" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="250" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Image" Type="nvarchar" MaxLength="200" />
+    <Property Name="Category" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'AigExam.dbo.V_getCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="V_getCategory">
     <Key>
@@ -13,6 +26,15 @@ warning 6002: The table/view 'AigExam.dbo.V_getCategory' does not have a primary
     <Parameter Name="categoryID" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="AigExamModelStoreContainer">
+    <EntitySet Name="V_getAllArticles" EntityType="Self.V_getAllArticles" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_getAllArticles].[ID] AS [ID], 
+    [V_getAllArticles].[Title] AS [Title], 
+    [V_getAllArticles].[Description] AS [Description], 
+    [V_getAllArticles].[Image] AS [Image], 
+    [V_getAllArticles].[Category] AS [Category]
+    FROM [dbo].[V_getAllArticles] AS [V_getAllArticles]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="V_getCategory" EntityType="Self.V_getCategory" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [V_getCategory].[ID] AS [ID], 

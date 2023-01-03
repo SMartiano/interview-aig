@@ -12,6 +12,7 @@
     <FunctionImport Name="P_getArticlesByCategory" ReturnType="Collection(AigExamModel.P_getArticlesByCategory_Result)">
       <Parameter Name="categoryID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="V_getAllArticles" EntityType="AigExamModel.V_getAllArticles" />
   </EntityContainer>
   <ComplexType Name="P_getArticlesByCategory_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -20,4 +21,15 @@
     <Property Type="String" Name="Image" Nullable="true" MaxLength="200" />
     <Property Type="Int32" Name="Category" Nullable="false" />
   </ComplexType>
+  <EntityType Name="V_getAllArticles">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Category" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>
